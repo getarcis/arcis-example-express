@@ -1,0 +1,22 @@
+{
+  "name": "arcis-example-express",
+  "version": "1.0.0",
+  "description": "Minimal Express + Arcis app. Runs a single endpoint that proves Arcis blocks attack payloads (XSS / SQLi / path traversal / command injection / SSTI / NoSQL / XXE / header injection) and lets safe input through.",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "attack": "node attack.js"
+  },
+  "license": "MIT",
+  "author": "Gagan CM",
+  "dependencies": {
+    "@arcis/node": "^1.5.0",
+    "express": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
