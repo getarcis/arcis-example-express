@@ -1,6 +1,11 @@
-// Minimal Express + Arcis app. One install, one middleware line,
-// twenty-plus attack vectors blocked. Run with `npm start`, then
-// fire `npm run attack` in another shell to see Arcis at work.
+// Minimal Express + Arcis app. One install, one middleware line, the
+// full Arcis sanitizer pipeline (XSS, SQL, NoSQL, path, command, SSTI,
+// XXE, prompt injection, prototype, LDAP, XPath, header injection) +
+// rate limiting + security headers gated against your handler. Run
+// with `npm start`, then fire `npm run attack` in another shell to
+// see Arcis at work. See README for the full "does / does not do"
+// table; bot / CSRF / CORS / cookies / validation / error-scrub are
+// deliberate opt-ins.
 
 import express from 'express';
 import { arcis } from '@arcis/node';
