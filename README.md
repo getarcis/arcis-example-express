@@ -1,5 +1,7 @@
 # arcis-example-express
 
+[![CI](https://github.com/getarcis/arcis-example-express/actions/workflows/ci.yml/badge.svg)](https://github.com/getarcis/arcis-example-express/actions/workflows/ci.yml)
+
 > Minimal Express + Arcis app. One install, one middleware line, the full Arcis sanitizer pipeline gated against your handler.
 
 ## What this is

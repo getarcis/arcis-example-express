@@ -1,0 +1,37 @@
+name: CI
+
+# Smoke test on every push + PR. Verifies that:
+#   1. npm install resolves the dependency tree (Arcis + Express)
+#   2. server.js + attack.js parse cleanly (catches stray syntax bugs
+#      before they reach a user trying the demo cold)
+#
+# Does NOT yet boot the server + fire the attack script in CI — that
+# lives on the dashboard plan F2 / org backlog item 18 (run attack
+# script + fail on 200). Plain syntax check is the minimum signal worth
+# blocking a PR on.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["20", "22"]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install --no-audit --no-fund
+      - name: Verify server.js parses
+        run: node --check server.js
+      - name: Verify attack.js parses
+        run: node --check attack.js
